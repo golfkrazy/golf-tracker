@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -30,9 +32,18 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-12">
       <section className="mb-20 text-center relative">
+        {/* Animated Golf Ball */}
+        <div className="relative h-20 mb-8 overflow-hidden">
+          <div className="golf-ball-container">
+            <div className="golf-ball">
+              <div className="golf-ball-inner">⛳</div>
+            </div>
+          </div>
+        </div>
+        
         {/* Decorative elements */}
-        <div className="absolute left-0 top-0 text-8xl opacity-10 hidden lg:block">⛳</div>
-        <div className="absolute right-0 top-0 text-8xl opacity-10 hidden lg:block">📋</div>
+        <div className="absolute left-0 top-24 text-8xl opacity-10 hidden lg:block">⛳</div>
+        <div className="absolute right-0 top-24 text-8xl opacity-10 hidden lg:block">📋</div>
         
         <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-6">
           Improve Your Golf Game with Data
@@ -68,6 +79,108 @@ export default function Home() {
           ))}
         </div>
       </section>
+      
+      <style jsx>{`
+        .golf-ball-container {
+          position: relative;
+          width: 100%;
+          height: 80px;
+        }
+        
+        .golf-ball {
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0);
+          border-radius: 50%;
+          box-shadow: 
+            inset -5px -5px 10px rgba(0, 0, 0, 0.2),
+            3px 3px 8px rgba(0, 0, 0, 0.3),
+            0 0 0 2px rgba(255, 255, 255, 0.1);
+          animation: roll 8s ease-in-out infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .golf-ball-inner {
+          font-size: 24px;
+          animation: counter-roll 8s ease-in-out infinite;
+        }
+        
+        .golf-ball::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: 
+            radial-gradient(circle at 20% 25%, transparent 2px, transparent 3px) 0 0 / 8px 8px,
+            radial-gradient(circle at 60% 25%, transparent 2px, transparent 3px) 0 0 / 8px 8px,
+            radial-gradient(circle at 40% 50%, transparent 2px, transparent 3px) 0 0 / 8px 8px,
+            radial-gradient(circle at 20% 75%, transparent 2px, transparent 3px) 0 0 / 8px 8px,
+            radial-gradient(circle at 60% 75%, transparent 2px, transparent 3px) 0 0 / 8px 8px;
+        }
+        
+        @keyframes roll {
+          0%, 100% {
+            left: 0;
+            transform: rotate(0deg);
+          }
+          25% {
+            left: calc(50% - 30px);
+            transform: rotate(360deg);
+          }
+          50% {
+            left: calc(100% - 60px);
+            transform: rotate(720deg);
+          }
+          75% {
+            left: calc(50% - 30px);
+            transform: rotate(1080deg);
+          }
+        }
+        
+        @keyframes counter-roll {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(-360deg);
+          }
+          50% {
+            transform: rotate(-720deg);
+          }
+          75% {
+            transform: rotate(-1080deg);
+          }
+        }
+        
+        /* Add a subtle shadow that moves with the ball */
+        .golf-ball::after {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 40px;
+          height: 8px;
+          background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3), transparent);
+          border-radius: 50%;
+          animation: shadow-move 8s ease-in-out infinite;
+        }
+        
+        @keyframes shadow-move {
+          0%, 100% {
+            opacity: 0.3;
+            width: 40px;
+          }
+          50% {
+            opacity: 0.5;
+            width: 50px;
+          }
+        }
+      `}</style>
     </div>
   )
 }

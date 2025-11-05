@@ -1,6 +1,8 @@
-Perfect! Your Golf Tracker app is complete and looking great! 🎉
+Windsurf App: Golf Game Tracker
 
-Summary of What We Built:
+https://golfgametracker.netlify.app/
+
+Summary of My Application:
 ✅ Fully Functional Golf Tracker App
 Home Page - Beautiful landing page with golf flag ⛳ and scorecard 📋 decorations
 Rounds Page - View all your golf rounds with scores, fairways, GIR, and putts
@@ -24,3 +26,5 @@ TypeScript
 Tailwind CSS v3
 Radix UI components
 Lucide React icon
+
+https://stashsnap.netlify.app/
